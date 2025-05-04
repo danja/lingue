@@ -1,0 +1,2 @@
+# lingue
+a vocab
