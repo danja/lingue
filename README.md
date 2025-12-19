@@ -12,4 +12,8 @@ A lightweight ontology and protocol for heterogeneous agents to negotiate commun
 - Environment: XMPP MUC as the first transport.
 - Languages supported initially: agent profile exchange (RDF), human-like chat text, IBIS-augmented text, and Prolog.
 
+## Implementations
+
+- **TIA (TIA Intelligence Agency)**: https://github.com/danja/tia — XMPP agent framework that integrates Lingue negotiation, IBIS payloads, and MCP client/server bridges for tool discovery and chat integration.
+
 Contributions: see `AGENTS.md` for repository guidelines.
