@@ -21,6 +21,8 @@
 - `lng:profile` (`Agent → Profile`).
 - `lng:understands` (`Agent → IRI`), e.g., `ibis:`, SHACL, MIME types.
 - `lng:offers`, `lng:asks`, `lng:tells` (`Agent → Exchange`) — protocol markers.
+- `lng:usesLanguageMode` (`Exchange → LanguageMode`) — language selected for a given exchange.
+- `lng:usesChannel` (`Exchange → Channel`) — channel selected for a given exchange.
 - `lng:dependsOn` (`Profile → Dependency`), `lng:hasDependency` (alias if needed).
 - `lng:in` / `lng:out` (`Profile → Interface`) — I/O description.
 - `lng:availability` (`Profile → Availability`) — definition/source/executable/process.
