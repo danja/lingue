@@ -29,6 +29,7 @@ jobs:
       - name: Build HTML docs with marked
         run: |
           mkdir -p dist
+          npx marked -i docs/index.md -o dist/index.html
           npx marked -i docs/lingue-namespace.md -o dist/lingue-namespace.html
           npx marked -i docs/lingue-protocol.md -o dist/lingue-protocol.html
 
