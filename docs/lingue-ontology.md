@@ -1,4 +1,4 @@
-# Lingue Ontology (Draft)
+# Lingue Ontology (Draft, 0.1.1)
 
 ## Namespaces and Scope
 - `lng:` — `http://purl.org/stuff/lingue/` (all new terms, including the RPP-derived ones).
@@ -23,6 +23,7 @@
 - `lng:offers`, `lng:asks`, `lng:tells` (`Agent → Exchange`) — protocol markers.
 - `lng:usesLanguageMode` (`Exchange → LanguageMode`) — language selected for a given exchange.
 - `lng:usesChannel` (`Exchange → Channel`) — channel selected for a given exchange.
+- `lng:payload` (`Exchange → rdf:Resource`) — structured payload element (RDF or JSON) associated with an exchange.
 - `lng:dependsOn` (`Profile → Dependency`), `lng:hasDependency` (alias if needed).
 - `lng:in` / `lng:out` (`Profile → Interface`) — I/O description.
 - `lng:availability` (`Profile → Availability`) — definition/source/executable/process.
@@ -60,3 +61,6 @@
 
 ## SHACL Intersection (sketch)
 - A `lng:ProtocolShape` targets `lng:Agent` and asserts at least one shared `lng:LanguageMode` and `lng:Channel` via `lng:supports`, mirroring the negotiation idea in `docs/dev-prompts/requirements.md`. Use SHACL `sh:in` or `sh:hasValue` constraints to validate overlap.
+
+## Change Notes
+- 0.1.1: added `lng:payload` to associate structured payloads (RDF/JSON) with exchanges.

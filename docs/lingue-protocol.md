@@ -2,7 +2,7 @@
 
 ## Scope and Transport
 - Default environment: XMPP with **MUC** for human-visible messages and private **chat** stanzas for structured exchange.
-- No custom XMPP extension required initially; rely on XEP-0030 (disco#info) for capability discovery and XEP-0045 for rooms. Payloads may carry RDF/Turtle, Prolog, or plain text in `<body>` or `jabber:x:data`.
+- No custom XMPP extension required initially; rely on XEP-0030 (disco#info) for capability discovery and XEP-0045 for rooms. Payloads may carry RDF/Turtle, Prolog, or plain text in `<body>` or Lingue `payload` elements.
 
 ## Roles
 - **Lingue Agent**: advertises capabilities, negotiates, executes ASK/TELL.
@@ -26,8 +26,9 @@
 ## Payload Conventions
 - **Agent profile exchange**: Turtle/XML carrying `lng:Profile` and dependencies; include a one-line purpose.
 - **Human-like chat**: free text in `<body>`.
-- **IBIS-augmented text**: plain text plus optional RDF snippet (Turtle) in `CDATA`; always include one-line IBIS summary.
-- **Prolog**: `text/x-prolog` clauses in `CDATA`; include intent (“query for issue-12 positions”) and expected bindings.
+- **IBIS-augmented text**: plain text plus optional RDF snippet (Turtle) in a `payload`; always include one-line IBIS summary in the room.
+- **Prolog**: `text/x-prolog` clauses in a `payload`; include intent (“query for issue-12 positions”) and expected bindings.
+- **Status/meta-transparency**: `payload` in `lng:HumanChat` mode with JSON `{ type: "status", ... }` and empty `<body>` when suppressing chat noise.
 
 ## ASK/TELL Semantics
 - **ASK**: request graph pattern or capability; in RDF, use `lng:asks` linking agent to an `lng:Exchange` that contains the graph pattern. Include a paraphrase in `<body>`.
@@ -64,14 +65,24 @@
 ```xml
 <message to="peer@example.org" type="chat">
   <body>Summary: Position = migrate to CoAP; supports: lower overhead, IoT fit.</body>
-  <data xmlns="jabber:x:data"><![CDATA[
+  <payload xmlns="http://purl.org/stuff/lingue/" mime="text/turtle" mode="http://purl.org/stuff/lingue/IBISText"><![CDATA[
 @prefix ibis: <https://vocab.methodandstructure.com/ibis#> .
 @prefix lng:  <http://purl.org/stuff/lingue/> .
 
 :pos-001 a ibis:Position ;
   ibis:responds-to :issue-12 ;
   rdfs:label "Migrate to CoAP" .
-  ]]></data>
+  ]]></payload>
+</message>
+```
+
+**Status payload (room transparency)**
+```xml
+<message to="room@conference.example.org" type="groupchat">
+  <body></body>
+  <payload xmlns="http://purl.org/stuff/lingue/" mime="application/json" mode="http://purl.org/stuff/lingue/HumanChat">
+    {"type":"status","sessionId":"abc-123","message":"MFR solution request for abc-123","timestamp":"2025-12-28T09:20:21.448Z"}
+  </payload>
 </message>
 ```
 
@@ -87,3 +98,6 @@
 - Confirm IRIs for protocol states (e.g., negotiation open/closed).
 - Add SHACL for MUC initiation policy and feature intersection validation.
 - Decide where IBIS/Prolog artifacts are persisted (room log vs. external store).
+
+## Change Notes
+- 0.1.1: clarified `payload` elements (mode/mime metadata) and status JSON for meta-transparency.

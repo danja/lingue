@@ -144,6 +144,12 @@ lng:tells a owl:ObjectProperty ;
     rdfs:label "tells" ;
     rdfs:comment "Marks an exchange as an assertion/response." .
 
+lng:payload a owl:ObjectProperty ;
+    rdfs:domain lng:Exchange ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "payload" ;
+    rdfs:comment "Structured payload (RDF graph or JSON document) associated with an exchange." .
+
 lng:dependsOn a owl:ObjectProperty ;
     rdfs:domain lng:Profile ;
     rdfs:range lng:Dependency ;

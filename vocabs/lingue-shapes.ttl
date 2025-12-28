@@ -134,6 +134,17 @@ lng:ExchangeShape
         """ ;
     ] .
 
+# Optional: exchanges may include a structured payload (RDF or JSON).
+
+lng:ExchangePayloadShape
+    a sh:NodeShape ;
+    sh:targetSubjectsOf lng:payload ;
+    sh:property [
+        sh:path lng:payload ;
+        sh:nodeKind sh:IRI ;
+        sh:message "payload should point to a structured resource (RDF graph or JSON document)." ;
+    ] .
+
 # Recommended exchange properties (minted here) to describe negotiated channel/mode
 
 lng:usesLanguageMode a owl:ObjectProperty ;

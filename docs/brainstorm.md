@@ -64,6 +64,7 @@ The system uses standard XMPP without custom extensions:
 - **XEP-0030**: Service Discovery for capability detection
 - **XEP-0054**: vcard-temp for agent profiles
 - Standard `<message>`, `<iq>`, `<presence>` stanzas
+- Lingue `payload` elements for structured mode/mime metadata; empty `<body>` allowed for status-only updates
 
 ### Example XMPP Flow
 
@@ -99,7 +100,7 @@ The system uses standard XMPP without custom extensions:
 ```xml
 <message to="agent2@example.org" type="chat">
   <body>Sending structured IBIS data...</body>
-  <data xmlns="jabber:x:data">
+  <payload xmlns="http://purl.org/stuff/lingue/" mime="text/turtle" mode="http://purl.org/stuff/lingue/IBISText">
     <![CDATA[
       @prefix ibis: <https://vocab.methodandstructure.com/ibis#> .
       
@@ -112,7 +113,7 @@ The system uses standard XMPP without custom extensions:
         ibis:supports :pos-001 ;
         rdfs:label "40% less overhead than HTTP" .
     ]]>
-  </data>
+  </payload>
 </message>
 ```
 

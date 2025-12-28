@@ -1,10 +1,10 @@
-# Lingue Namespace Document (Version 0.1.0)
+# Lingue Namespace Document (Version 0.1.1)
 
 **Namespace**: `http://purl.org/stuff/lingue/`
 
 **This version**: `vocabs/lingue.ttl`  
 **Title**: Lingue Ontology  
-**Status**: Draft 0.1.0 (initial XMPP/MUC focus)  
+**Status**: Draft 0.1.1 (payload-enabled exchanges, XMPP/MUC focus)  
 **License**: see `LICENSE` in this repository  
 
 ## Abstract
@@ -38,6 +38,7 @@ All terms are in the Lingue namespace: `http://purl.org/stuff/lingue/` (prefix `
 - `lng:offers` / `lng:asks` / `lng:tells` (`Agent → Exchange`) — protocol markers.
 - `lng:usesLanguageMode` (`Exchange → LanguageMode`) — selected mode for an exchange.
 - `lng:usesChannel` (`Exchange → Channel`) — selected channel for an exchange.
+- `lng:payload` (`Exchange → rdfs:Resource`) — structured payload element (RDF or JSON) associated with an exchange.
 - `lng:dependsOn` (`Profile → Dependency`) — required dependencies; alias `lng:hasDependency`.
 - `lng:in` / `lng:out` (`Profile → Interface`) — input/output description.
 - `lng:availability` (`Profile → Availability`) — machine-readability level.
@@ -57,4 +58,5 @@ All terms are in the Lingue namespace: `http://purl.org/stuff/lingue/` (prefix `
 - External vocabularies: FOAF (`http://xmlns.com/foaf/0.1/`), IBIS (`https://vocab.methodandstructure.com/ibis#`), SHACL (`http://www.w3.org/ns/shacl#`)
 
 ## Change History
+- **0.1.1** — Added `lng:payload` for structured exchange payload references (RDF/JSON).
 - **0.1.0** — Initial Lingue namespace, re-minting RPP profile terms; XMPP MUC and language mode individuals (human chat, IBIS text, Prolog, agent profile exchange); availability controlled terms added.

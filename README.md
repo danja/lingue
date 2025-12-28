@@ -19,5 +19,7 @@ A lightweight ontology and protocol for heterogeneous agents to negotiate commun
 ## Implementations
 
 - **TIA (TIA Intelligence Agency)**: https://github.com/danja/tia — XMPP agent framework that integrates Lingue negotiation, IBIS payloads, and MCP client/server bridges for tool discovery and chat integration.
+  - Uses `payload` elements in the Lingue namespace with `mode` + `mime` attributes and optional `status` JSON payloads for meta-transparency.
+  - Distinguishes human-visible room summaries from structured payloads (often sent without a `<body>`).
 
 Contributions: see `AGENTS.md` for repository guidelines.
