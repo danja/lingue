@@ -31,7 +31,9 @@ jobs:
           mkdir -p dist
           npx marked -i docs/index.md -o dist/index.html
           npx marked -i docs/lingue-namespace.md -o dist/lingue-namespace.html
+          npx marked -i docs/lingue-ontology.md -o dist/lingue-ontology.html
           npx marked -i docs/lingue-protocol.md -o dist/lingue-protocol.html
+          npx marked -i docs/brainstorm.md -o dist/brainstorm.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
